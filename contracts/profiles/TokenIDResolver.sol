@@ -3,14 +3,14 @@ pragma solidity ^0.5.8;
 import "../ResolverBase.sol";
 
 contract TokenIDResolver is ResolverBase {
-    bytes4 constant private TOKENID_INTERFACE_ID = bytes4(keccak256("interfaceImplementer(bytes32,bytes4)"));
+    bytes4 constant private TOKENID_INTERFACE_ID = bytes4(keccak256("tokenID(bytes32)")) ^ bytes4(keccak256("setTokenID(bytes32,uint256)"));
 
     event TokenIDChanged(bytes32 indexed node, uint256 tokenID);
 
     mapping(bytes32=>uint256) _tokenIDs;
 
     /**
-     * Returns the address associated with an ENS node.
+     * Returns the tokenID associated with an ENS node.
      * @param node The ENS node to query.
      * @return The associated tokenID.
      */
@@ -25,6 +25,6 @@ contract TokenIDResolver is ResolverBase {
     }
 
     function supportsInterface(bytes4 interfaceID) public pure returns(bool) {
-        return interfaceID == this.tokenID.selector ^ this.setTokenID.selector || super.supportsInterface(interfaceID);
+        return interfaceID == TOKENID_INTERFACE_ID || super.supportsInterface(interfaceID);
     }
 }
