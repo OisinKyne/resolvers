@@ -5,13 +5,22 @@
 A collection of resolvers for ENS domains
 
 ## Built With
-* [Truffle](https://github.com/trufflesuite/truffle) - Ethereum development environment 
+
+- [Truffle](https://github.com/trufflesuite/truffle) - Ethereum development environment
 
 ## Authors
 
-* **Dean Eigenmann** - [decanus](https://github.com/decanus)
+- **Dean Eigenmann** - [decanus](https://github.com/decanus)
 
-See also the list of [contributors](https://github.com/ensdomains/dnssec-oracle/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/ensdomains/resolvers/contributors) who participated in this project.
+
+## Cheatsheet
+
+If you are having trouble with getting this repo to compile, you can flatten all of the .sol files into one by using `truffle-flattener` as such:
+
+```
+./node_modules/.bin/truffle-flattener ./contracts/PublicResolver.sol > ./contracts/FlattenedPublicResolver.sol
+```
 
 ## License
 

@@ -3,7 +3,7 @@ pragma solidity ^0.5.8;
 import "../ResolverBase.sol";
 
 contract TokenIDResolver is ResolverBase {
-    bytes4 constant private TOKENID_INTERFACE_ID = bytes4(keccak256("tokenID(bytes32)")) ^ bytes4(keccak256("setTokenID(bytes32,uint256)"));
+    bytes4 constant private TOKENID_INTERFACE_ID = 0x4b23de55;
 
     event TokenIDChanged(bytes32 indexed node, uint256 tokenID);
 
@@ -14,11 +14,16 @@ contract TokenIDResolver is ResolverBase {
      * @param node The ENS node to query.
      * @return The associated tokenID.
      */
-
     function tokenID(bytes32 node) public view returns(uint256) {
         return _tokenIDs[node];
     }
 
+    /**
+     * Sets the tokenID associated with an ENS node.
+     * May only be called by those authorised for this node in the ENS registry.
+     * @param node The node to update.
+     * @param token The tokenID to set
+     */
     function setTokenID(bytes32 node, uint256 token) public authorised(node) {
         emit TokenIDChanged(node, token);
         _tokenIDs[node] = token;
