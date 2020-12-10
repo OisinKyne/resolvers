@@ -19,7 +19,7 @@ See also the list of [contributors](https://github.com/ensdomains/resolvers/cont
 If you are having trouble with getting this repo to compile, you can flatten all of the .sol files into one by using `truffle-flattener` as such:
 
 ```
-./node_modules/.bin/truffle-flattener ./contracts/PublicResolver.sol > ./contracts/FlattenedPublicResolver.sol
+npx truffle-flattener ./contracts/PublicResolver.sol > ./contracts/FlattenedPublicResolver.sol
 ```
 
 ## License

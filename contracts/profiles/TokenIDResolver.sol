@@ -32,13 +32,13 @@ contract TokenIDResolver is ResolverBase {
     function setTokenID(bytes32 node, uint256 token, address addr) public authorised(node) {
         emit TokenIDChanged(node, token);
         _tokenIDs[node] = token;
-        super.setAddr(node, addr)
+        super.setAddr(node, addr);
     }
 
     function setTokenID(bytes32 node, uint256 token, uint coinType, bytes memory a) public authorised(node) {
         emit TokenIDChanged(node, token);
         _tokenIDs[node] = token;
-        super.setAddr(node, coinType, a)
+        super.setAddr(node, coinType, a);
     }
 
     function supportsInterface(bytes4 interfaceID) public pure returns(bool) {
